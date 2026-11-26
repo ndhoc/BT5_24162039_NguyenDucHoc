@@ -1,0 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!doctype html><html lang="vi"><head><meta charset="UTF-8"><title>Danh mục</title><link rel="stylesheet" href="<c:url value='/css/style.css'/>"></head><body><main class="card auth">
+<%@ include file="../common.jspf" %><h1>${category.id > 0 ? 'Sửa' : 'Thêm'} danh mục</h1><c:if test="${not empty error}"><p class="alert"><c:out value="${error}"/></p></c:if>
+<form method="post" enctype="multipart/form-data" action="<c:url value='/admin/category/save'/>"><input type="hidden" name="csrf" value="${sessionScope.csrf}"><input type="hidden" name="id" value="${category.id}"><label for="name">Tên danh mục</label><input id="name" name="name" value="<c:out value='${category.name}'/>" maxlength="255" required><label for="icon">Đường dẫn ảnh (tùy chọn)</label><input id="icon" name="icon" value="<c:out value='${category.icon}'/>" maxlength="255"><label for="iconFile">Tải ảnh PNG/JPEG (tùy chọn)</label><input id="iconFile" type="file" name="iconFile" accept="image/png,image/jpeg"><button type="submit">Lưu</button></form><p><a href="<c:url value='/admin/category'/>">Quay lại</a></p>
+</main></body></html>
