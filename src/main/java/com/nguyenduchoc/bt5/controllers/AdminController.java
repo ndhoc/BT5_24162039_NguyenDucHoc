@@ -82,7 +82,7 @@ public class AdminController {
     @GetMapping("/user/edit") public String userEdit(@RequestParam int id, Model model) {
         Account account = store.account(id);
         if (account == null) return "redirect:/admin/user?missing=1";
-        model.addAttribute("user", account); return "admin/user-form";
+        model.addAttribute("editingUser", account); return "admin/user-form";
     }
     @PostMapping("/user/save") public String userSave(@RequestParam(defaultValue = "0") int id,
             @RequestParam String username, @RequestParam String fullName, @RequestParam String email,
